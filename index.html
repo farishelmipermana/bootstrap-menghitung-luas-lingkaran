@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Menghitung Luas dan Keliling Lingkaran</title>
-    <!-- memuat Bootstrap -->
+    <title>Program Menghitung Luas dan Keliling Lingkaran</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <!-- memuat jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- memuat JavaScript Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+      .cardbox {
+        background-color: #3d087b;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px #11052c;
+      }
+      /* Tampilan desktop */
+      @media (min-width: 992px) {
+        .cardbox {
+          max-width: 500px;
+          margin: auto;
+        }
+      }
+
+      /* Tampilan tablet */
+    </style>
   </head>
-  <body>
+  <body style="color: #ffe459">
     <div class="container mt-5">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h3>Menghitung Luas dan Keliling Lingkaran</h3>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="jari-jari">Jari-jari Lingkaran:</label>
-              <input type="number" class="form-control" id="jari-jari" placeholder="Masukkan jari-jari" />
+      <div class="cardbox p-5">
+        <h3 class="text-center mb-5">Program Menghitung Luas dan Keliling Lingkaran</h3>
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Jari-jari</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="jari_jari" placeholder="Masukkan jari-jari" />
             </div>
-            <button type="button" class="btn btn-primary" onclick="hitung()">Hitung</button>
-          </form>
-          <hr />
-          <div class="form-group">
-            <label for="luas">Luas Lingkaran:</label>
-            <input type="number" class="form-control" id="luas" readonly />
           </div>
-          <div class="form-group">
-            <label for="keliling">Keliling Lingkaran:</label>
-            <input type="number" class="form-control" id="keliling" readonly />
+          <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button style="background-color: #f43b86; color: #3d087b" type="button" class="btn" onclick="hitung()">Hitung</button>
+            </div>
           </div>
-        </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Luas</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="luas" disabled />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Keliling</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="keliling" disabled />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
     <script>
       function hitung() {
-        // Mendapatkan nilai jari-jari dari input
-        var jari_jari = document.getElementById("jari-jari").value;
-
-        // Menghitung luas dan keliling lingkaran
+        var jari_jari = parseFloat(document.getElementById("jari_jari").value);
         var luas = Math.PI * jari_jari * jari_jari;
         var keliling = 2 * Math.PI * jari_jari;
-
-        // Memasukkan nilai luas dan keliling ke dalam input yang sesuai
-        document.getElementById("luas").value = luas.toFixed(2);
-        document.getElementById("keliling").value = keliling.toFixed(2);
+        document.getElementById("luas").value = luas;
+        document.getElementById("keliling").value = keliling;
       }
     </script>
   </body>
